@@ -14,6 +14,6 @@ module.exports = {
   plugins: ["react"],
   rules: {
     "linebreak-style": ["error", "unix"],
-    semi: ["error", "always"],
+    "react/no-unescaped-entities": ["warn"],
   },
 };
