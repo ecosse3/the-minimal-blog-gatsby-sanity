@@ -30,6 +30,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`poppins\:300,400,700,800`],
+      },
+    },
+    {
       resolve: `gatsby-source-sanity`,
       options: {
         projectId: "7bs53b5b",
