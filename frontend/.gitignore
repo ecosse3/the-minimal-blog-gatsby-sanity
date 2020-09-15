@@ -3,6 +3,7 @@
 /build
 /.cache
 /public/**/
+/public
 
 # Lock files
 /package-lock.json
