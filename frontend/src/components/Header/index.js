@@ -1,25 +1,41 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { HeaderContainer, Redirect, Title } from "./styles";
-import { Grid, Row, Col } from "react-styled-flexboxgrid";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
+import { useStaticQuery, graphql } from "gatsby";
+import { Grid } from "react-styled-flexboxgrid";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const Header = ({ siteTitle }) => {
+  const data = useStaticQuery(graphql`
+    query MenuItemsQuery {
+      allSanityCategory(sort: { fields: title }) {
+        nodes {
+          id
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <Grid>
       <Navbar bg='#FFF' expand='lg'>
-        <Navbar.Brand href='#home'>{siteTitle}</Navbar.Brand>
+        <Navbar.Brand href='/'>{siteTitle}</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ml-auto'>
-            <Nav.Link href='#home'>Home</Nav.Link>
-            <Nav.Link href='#link'>About</Nav.Link>
+            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link>About</Nav.Link>
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='#action/3.1'>Technology</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.2'>Travel</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Programming</NavDropdown.Item>
+              {data?.allSanityCategory?.nodes.map((item) => (
+                <NavDropdown.Item href={`/categories/${item.slug.current}`} key={item.id}>
+                  {item.title}
+                </NavDropdown.Item>
+              ))}
               <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>All posts</NavDropdown.Item>
+              <NavDropdown.Item href='/blog'>All posts</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href='#contact'>Contact</Nav.Link>
           </Nav>
