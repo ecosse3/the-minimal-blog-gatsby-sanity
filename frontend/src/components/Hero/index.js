@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
+import { useMediaQuery } from "react-responsive";
 import Slider from "react-slick";
 import { Row, Col } from "react-styled-flexboxgrid";
 import { SliderWrapper, Title, SliderContainer, Subtitle } from "./styles";
@@ -26,6 +27,8 @@ const Hero = () => {
     }
   `);
 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <SliderWrapper>
       <SliderContainer>
@@ -33,11 +36,11 @@ const Hero = () => {
           <div>
             <Row between='xs' middle='xs'>
               <Col xs>
-                <img src={data.image.childImageSharp.fluid.src} height='600' />
+                <img src={data.image.childImageSharp.fluid.src} height={isMobile ? 400 : 600} />
               </Col>
               <Col xs>
-                <Subtitle>Minimized Simplicity</Subtitle>
-                <Title>The minimal blog</Title>
+                <Subtitle isMobile={isMobile}>Minimized Simplicity</Subtitle>
+                <Title isMobile={isMobile}>The minimal blog</Title>
               </Col>
             </Row>
           </div>

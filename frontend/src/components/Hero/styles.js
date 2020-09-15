@@ -15,7 +15,7 @@ export const SliderContainer = styled.div`
 export const Title = styled.div`
   font-family: "Poppins";
   font-weight: 900;
-  font-size: 92px;
+  font-size: ${(props) => (props.isMobile ? "56px" : "92px")};
   line-height: 1.24;
   margin-left: -25%;
 `;
