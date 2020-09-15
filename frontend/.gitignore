@@ -2,8 +2,11 @@
 /node_modules
 /build
 /.cache
-/public
+/public/**/
 
 # Lock files
 /package-lock.json
 /yarn.lock
+
+# Other files
+tags
