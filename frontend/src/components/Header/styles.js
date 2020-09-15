@@ -3,9 +3,8 @@ import { Link } from "gatsby";
 
 export const HeaderContainer = styled.header`
   background: transparent;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   color: #000000;
-  margin-bottom: 1.45rem;
   padding-top: 1.45rem;
   padding-bottom: 1.45rem;
 `;
