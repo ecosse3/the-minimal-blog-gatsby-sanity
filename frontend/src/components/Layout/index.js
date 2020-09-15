@@ -14,6 +14,7 @@ import { theme } from "../../styles/theme";
 import { Grid } from "react-styled-flexboxgrid";
 
 import Header from "../Header";
+import Footer from "../Footer";
 import "./styles.css";
 
 const Layout = ({ children }) => {
@@ -33,12 +34,8 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <Grid>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
-        </footer>
       </Grid>
+      <Footer />
     </ThemeProvider>
   );
 };
