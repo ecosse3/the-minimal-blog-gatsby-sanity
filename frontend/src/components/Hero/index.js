@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import Slider from "react-slick";
 import { Row, Col } from "react-styled-flexboxgrid";
-import { SliderWrapper, Title } from "./styles";
+import { SliderWrapper, Title, SliderContainer, Subtitle } from "./styles";
 
 const Hero = () => {
   const settings = {
@@ -28,24 +28,27 @@ const Hero = () => {
 
   return (
     <SliderWrapper>
-      <Slider {...settings}>
-        <div>
-          <Row between='xs' middle='xs'>
-            <Col xs>
-              <img src={data.image.childImageSharp.fluid.src} height='600' />
-            </Col>
-            <Col xs>
-              <Title>The minimal blog</Title>
-            </Col>
-          </Row>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-      </Slider>
+      <SliderContainer>
+        <Slider {...settings}>
+          <div>
+            <Row between='xs' middle='xs'>
+              <Col xs>
+                <img src={data.image.childImageSharp.fluid.src} height='600' />
+              </Col>
+              <Col xs>
+                <Subtitle>Minimized Simplicity</Subtitle>
+                <Title>The minimal blog</Title>
+              </Col>
+            </Row>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+        </Slider>
+      </SliderContainer>
     </SliderWrapper>
   );
 };
