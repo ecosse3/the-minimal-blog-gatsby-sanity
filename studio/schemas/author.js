@@ -26,6 +26,11 @@ export default {
       }
     },
     {
+      name: 'shortBio',
+      title: 'Short Bio',
+      type: 'text'
+    },
+    {
       name: 'bio',
       title: 'Bio',
       type: 'array',
