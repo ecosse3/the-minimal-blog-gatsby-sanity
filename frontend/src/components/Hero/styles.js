@@ -4,6 +4,7 @@ export const SliderWrapper = styled.div`
   display: block;
   position: relative;
   overflow: hidden;
+  margin-top: 2rem;
   margin-bottom: 4rem;
 `;
 

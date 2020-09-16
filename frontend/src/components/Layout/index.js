@@ -27,9 +27,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Header siteTitle={siteTitle} />
-      <Grid>
-        <main>{children}</main>
-      </Grid>
+      <main>{children}</main>
       <Footer />
     </ThemeProvider>
   );

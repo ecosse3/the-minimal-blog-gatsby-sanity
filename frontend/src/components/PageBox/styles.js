@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 export const PageContainer = styled.div`
   position: relative;
-  padding: 40px 80px 40px 0;
+  padding: 40px 80px 80px 0;
 
   ${(props) =>
     props.isMobile &&
