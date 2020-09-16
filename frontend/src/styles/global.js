@@ -4,7 +4,6 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
   }
 
   *, *::after, *::before {
@@ -12,7 +11,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    position: relative;
     font-family: "Poppins", sans-serif;
+    padding: 0 0 6rem 0;
+    min-height: 100%;
   }
 
   small {
@@ -21,6 +23,11 @@ export const GlobalStyles = createGlobalStyle`
 
   a {
     color: #343078;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #000000;
     text-decoration: none;
   }
 `;
