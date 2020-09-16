@@ -16,5 +16,6 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     "no-unused-vars": ["warn"],
     "react/no-unescaped-entities": ["warn"],
+    "react/prop-types": ["warn"],
   },
 };

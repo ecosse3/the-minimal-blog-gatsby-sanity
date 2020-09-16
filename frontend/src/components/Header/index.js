@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { Grid } from "react-styled-flexboxgrid";
+
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const Header = ({ siteTitle }) => {
