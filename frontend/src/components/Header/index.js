@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { Grid } from "react-styled-flexboxgrid";
+import { theme } from "../../styles/theme";
 
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
@@ -22,7 +23,7 @@ const Header = ({ siteTitle }) => {
 
   return (
     <Grid>
-      <Navbar bg='#FFF' expand='lg'>
+      <Navbar bg={theme.colors.white} expand='lg' style={{ paddingLeft: 0, paddingRight: 0 }}>
         <Navbar.Brand href='/'>{siteTitle}</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
