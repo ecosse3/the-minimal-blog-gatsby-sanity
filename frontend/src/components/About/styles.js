@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
+import { theme } from "../../styles/theme";
 
 export const Container = styled.div`
   position: relative;
-  background-color: #0c0c0c;
+  background-color: ${theme.colors.darkBlack};
   width: 100%;
   padding: ${(props) => (props.isMobile ? "3rem 0 3rem 0" : "5rem")};
 `;
@@ -29,7 +30,7 @@ export const DataContainer = styled.div`
 `;
 
 export const Slug = styled.h6`
-  color: #ffffff;
+  color: ${theme.colors.white};
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 600;
@@ -41,26 +42,26 @@ export const Slug = styled.h6`
     left: 0;
     width: 80%;
     height: 2px;
-    background: #000000;
+    background: ${theme.colors.black};
     margin-bottom: 10px;
     ${(props) => props.isMobile && "display: none;"}
   }
 `;
 
 export const Title = styled.h1`
-  color: #ffffff;
+  color: ${theme.colors.white};
   font-size: ${(props) => (props.isMobile ? "32px" : "60px")};
   font-weight: 600;
 `;
 
 export const Description = styled.p`
-  color: #ffffff;
+  color: ${theme.colors.white};
   font-size: 1rem;
   padding-bottom: 5px;
 `;
 
 export const FancyLink = styled(Link)`
-  color: #ffffff;
+  color: ${theme.colors.white};
   font-size: 18px;
   transition: all 0.1s ease-in-out;
 
@@ -76,11 +77,11 @@ export const FancyLink = styled(Link)`
     transition: $animate;
     transition-duration: 0.75s;
     opacity: 0;
-    background-color: #ffffff;
+    background-color: ${theme.colors.white};
   }
 
   &:hover {
-    color: #ffffff;
+    color: ${theme.colors.white};
 
     &:before,
     &:after {
