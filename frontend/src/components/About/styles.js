@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 
 export const Container = styled.div`
   position: relative;
   background-color: #0c0c0c;
   width: 100%;
-  padding: 80px;
+  padding: ${(props) => (props.isMobile ? "3rem 0 3rem 0" : "5rem")};
 `;
 
 export const DataWrapper = styled.div`
@@ -14,6 +14,14 @@ export const DataWrapper = styled.div`
   height: 100%;
   flex-direction: column;
   justify-content: center;
+`;
+
+export const ImageWrapper = styled.div`
+  ${(props) =>
+    props.isMobile &&
+    css`
+      margin-top: 30px;
+    `}
 `;
 
 export const DataContainer = styled.div`
@@ -35,12 +43,13 @@ export const Slug = styled.h6`
     height: 2px;
     background: #000000;
     margin-bottom: 10px;
+    ${(props) => props.isMobile && "display: none;"}
   }
 `;
 
 export const Title = styled.h1`
   color: #ffffff;
-  font-size: 60px;
+  font-size: ${(props) => (props.isMobile ? "32px" : "60px")};
   font-weight: 600;
 `;
 

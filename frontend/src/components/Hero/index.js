@@ -19,7 +19,7 @@ const Hero = () => {
     query {
       image: file(relativePath: { eq: "yellow_circle.png" }) {
         childImageSharp {
-          fluid(maxWidth: 800) {
+          fluid(maxWidth: 600) {
             src
           }
         }
@@ -37,7 +37,7 @@ const Hero = () => {
             <div>
               <Row between='xs' middle='xs'>
                 <Col xs>
-                  <img src={data.image.childImageSharp.fluid.src} height={isMobile ? 400 : 600} />
+                  <img src={data.image.childImageSharp.fluid.src} height={isMobile ? null : 600} />
                 </Col>
                 <Col xs>
                   <Subtitle isMobile={isMobile}>Minimized Simplicity</Subtitle>
