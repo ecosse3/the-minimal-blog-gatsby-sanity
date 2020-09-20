@@ -18,7 +18,7 @@ exports.createPages = async function ({ actions, graphql }) {
 
   // Create paginated pages for posts
 
-  const postsPerPage = 2;
+  const postsPerPage = 4;
 
   const numPages = Math.ceil(data.allSanityPost.edges.length / postsPerPage);
 

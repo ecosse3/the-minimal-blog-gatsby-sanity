@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Grid, Row, Col } from "react-styled-flexboxgrid";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import { Pagination, PaginationItem } from "@material-ui/lab";
 
 import { Heading } from "../shared/Typography";
 import Layout from "../components/Layout";
@@ -30,7 +31,9 @@ export const query = graphql`
   }
 `;
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, pathContext }) => {
+  const { currentPage, pages } = pathContext;
+
   return (
     <Layout>
       <Grid>
@@ -42,6 +45,17 @@ const BlogPage = ({ data }) => {
         <section>
           <Row>
             <CardList cards={data?.allSanityPost.nodes} />
+          </Row>
+        </section>
+        <section style={{ marginTop: "3rem" }}>
+          <Row center='xs'>
+            <Pagination
+              page={currentPage}
+              count={pages}
+              renderItem={(item) => (
+                <PaginationItem component={Link} to={`${item.page === 1 ? "/blog" : `/blog/${item.page}`}`} {...item} />
+              )}
+            />
           </Row>
         </section>
       </Grid>
