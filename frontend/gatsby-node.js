@@ -14,8 +14,6 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `);
 
-  console.log(data);
-
   // Create paginated pages for posts
 
   const postsPerPage = 4;

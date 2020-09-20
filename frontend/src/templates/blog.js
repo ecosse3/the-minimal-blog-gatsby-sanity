@@ -31,8 +31,8 @@ export const query = graphql`
   }
 `;
 
-const BlogPage = ({ data, pathContext }) => {
-  const { currentPage, pages } = pathContext;
+const BlogPage = ({ data, pageContext }) => {
+  const { currentPage, pages } = pageContext;
 
   return (
     <Layout>
@@ -47,17 +47,23 @@ const BlogPage = ({ data, pathContext }) => {
             <CardList cards={data?.allSanityPost.nodes} />
           </Row>
         </section>
-        <section style={{ marginTop: "3rem" }}>
-          <Row center='xs'>
-            <Pagination
-              page={currentPage}
-              count={pages}
-              renderItem={(item) => (
-                <PaginationItem component={Link} to={`${item.page === 1 ? "/blog" : `/blog/${item.page}`}`} {...item} />
-              )}
-            />
-          </Row>
-        </section>
+        {pages > 1 && (
+          <section style={{ marginTop: "3rem" }}>
+            <Row center='xs'>
+              <Pagination
+                page={currentPage}
+                count={pages}
+                renderItem={(item) => (
+                  <PaginationItem
+                    component={Link}
+                    to={`${item.page === 1 ? "/blog" : `/blog/${item.page}`}`}
+                    {...item}
+                  />
+                )}
+              />
+            </Row>
+          </section>
+        )}
       </Grid>
     </Layout>
   );
@@ -65,6 +71,7 @@ const BlogPage = ({ data, pathContext }) => {
 
 BlogPage.propTypes = {
   data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export default BlogPage;
