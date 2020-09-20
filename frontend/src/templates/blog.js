@@ -8,10 +8,16 @@ import { Heading } from "../shared/Typography";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import CardList from "../components/CardList";
+import _ from "lodash";
 
 export const query = graphql`
-  query($limit: Int!, $skip: Int!) {
-    allSanityPost(sort: { order: DESC, fields: publishedAt }, limit: $limit, skip: $skip) {
+  query($limit: Int!, $skip: Int!, $category: [String]) {
+    allSanityPost(
+      sort: { order: DESC, fields: publishedAt }
+      limit: $limit
+      skip: $skip
+      filter: { categories: { elemMatch: { slug: { current: { in: $category } } } } }
+    ) {
       nodes {
         _id
         title
@@ -32,14 +38,29 @@ export const query = graphql`
 `;
 
 const BlogPage = ({ data, pageContext }) => {
-  const { currentPage, pages } = pageContext;
+  const { currentPage, pages, category } = pageContext;
+
+  console.log("category: ", category);
+  console.log("category type: ", typeof category);
+
+  const getPaginationLink = (item) => {
+    if (item.page === 1 && typeof category === "object") {
+      return "/blog";
+    } else if (item.page > 1 && typeof category == "object") {
+      return `/blog/${item.page}`;
+    } else if (item.page === 1 && typeof category === "string") {
+      return `/category/${category}`;
+    } else {
+      return `/category/${category}/${item.page}`;
+    }
+  };
 
   return (
     <Layout>
       <Grid>
         <SEO title='Blog' />
         <header>
-          <Heading mt={25}>Blog</Heading>
+          <Heading mt={25}>{typeof category === "object" ? "Blog" : _.startCase(_.toLower(category))}</Heading>
         </header>
         <hr />
         <section>
@@ -53,13 +74,7 @@ const BlogPage = ({ data, pageContext }) => {
               <Pagination
                 page={currentPage}
                 count={pages}
-                renderItem={(item) => (
-                  <PaginationItem
-                    component={Link}
-                    to={`${item.page === 1 ? "/blog" : `/blog/${item.page}`}`}
-                    {...item}
-                  />
-                )}
+                renderItem={(item) => <PaginationItem component={Link} to={getPaginationLink(item)} {...item} />}
               />
             </Row>
           </section>

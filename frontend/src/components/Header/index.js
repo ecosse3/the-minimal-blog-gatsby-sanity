@@ -32,7 +32,7 @@ const Header = ({ siteTitle }) => {
             <Nav.Link>About</Nav.Link>
             <NavDropdown title='Blog' id='basic-nav-dropdown'>
               {data?.allSanityCategory?.nodes.map((item) => (
-                <NavDropdown.Item href={`/categories/${item.slug.current}`} key={item.id}>
+                <NavDropdown.Item href={`/category/${item.slug.current}`} key={item.id}>
                   {item.title}
                 </NavDropdown.Item>
               ))}
