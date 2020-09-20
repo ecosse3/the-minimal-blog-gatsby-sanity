@@ -1,35 +1,36 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Grid, Row, Col } from "react-styled-flexboxgrid";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import { Heading } from "../shared/Typography";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import CardList from "../components/CardList";
 
-const BlogPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allSanityPost(sort: { order: DESC, fields: publishedAt }) {
-        nodes {
-          _id
-          title
-          slug {
-            current
-          }
-          publishedAt(formatString: "DD.MM.YYYYr.")
-          mainImage {
-            asset {
-              fluid(maxWidth: 700) {
-                ...GatsbySanityImageFluid
-              }
+export const query = graphql`
+  query($limit: Int!, $skip: Int!) {
+    allSanityPost(sort: { order: DESC, fields: publishedAt }, limit: $limit, skip: $skip) {
+      nodes {
+        _id
+        title
+        slug {
+          current
+        }
+        publishedAt(formatString: "DD.MM.YYYYr.")
+        mainImage {
+          asset {
+            fluid(maxWidth: 700) {
+              ...GatsbySanityImageFluid
             }
           }
         }
       }
     }
-  `);
+  }
+`;
 
+const BlogPage = ({ data }) => {
   return (
     <Layout>
       <Grid>
@@ -46,6 +47,10 @@ const BlogPage = () => {
       </Grid>
     </Layout>
   );
+};
+
+BlogPage.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default BlogPage;
