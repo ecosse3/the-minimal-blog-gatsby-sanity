@@ -9,7 +9,7 @@ const CardList = ({ cards }) => {
         <Card
           title={card.title}
           date={card.publishedAt}
-          link={card.slug}
+          link={card.slug.current}
           key={card._id}
           mainImage={card.mainImage}
           isLinkLocal={true}

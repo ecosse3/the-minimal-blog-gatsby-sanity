@@ -40,9 +40,6 @@ export const query = graphql`
 const BlogPage = ({ data, pageContext }) => {
   const { currentPage, pages, category } = pageContext;
 
-  console.log("category: ", category);
-  console.log("category type: ", typeof category);
-
   const getPaginationLink = (item) => {
     if (item.page === 1 && typeof category === "object") {
       return "/blog";
@@ -58,7 +55,7 @@ const BlogPage = ({ data, pageContext }) => {
   return (
     <Layout>
       <Grid>
-        <SEO title='Blog' />
+        <SEO title='Blog' type='blog' />
         <header>
           <Heading mt={25}>{typeof category === "object" ? "Blog" : _.startCase(_.toLower(category))}</Heading>
         </header>

@@ -1,5 +1,3 @@
-const _ = require("lodash");
-
 exports.createPages = async function ({ actions, graphql }) {
   // Consts
 
@@ -91,14 +89,14 @@ exports.createPages = async function ({ actions, graphql }) {
   });
 
   // Create single blog post
-  // posts.data.allSanityPost.edges.forEach((edge) => {
-  //   const slug = edge.node.slug.current;
-  //   const id = edge.node.id;
+  posts.data.allSanityPost.edges.forEach((edge) => {
+    const slug = edge.node.slug.current;
+    const id = edge.node.id;
 
-  //   actions.createPages({
-  //     path: `/blog/${slug}`,
-  //     component: requre.resolve(`./src/templates/singlePost.js`),
-  //     context: { id },
-  //   });
-  // });
+    actions.createPage({
+      path: `/blog/${slug}`,
+      component: require.resolve(`./src/templates/blog-post.js`),
+      context: { id },
+    });
+  });
 };
